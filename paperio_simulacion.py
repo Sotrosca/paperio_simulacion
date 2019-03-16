@@ -4,7 +4,7 @@ import numpy as np
 
 class tablero():
 	#tamañoCsaInicial es un numero impar que da el caudrado en el que inician 
-	#posicionJugadores es un vector con las coordenadas x e y de cada jugadora al iniciar
+	#posicionJugadores es una lista coordenadas x e y de cada jugadora al iniciar
 
 	def __init__(self, base, altura, tamanoCasaInicial, cantidadDeJugadores, posicionJugadores): 
 																									
@@ -13,8 +13,11 @@ class tablero():
 		self.tamanoCasaInicial = tamanoCasaInicial
 		self.cantidadDeJugadores = cantidadDeJugadores
 		self.posicionJugadores = posicionJugadores
+class decision():
+	def __init__(self, tablero, listaJugadores):
+		
 
-class jugadore():
+class jugador():
 	def __init__(self, nombre, playerID, tablero):
 
 		self.nombre = nombre
@@ -23,7 +26,7 @@ class jugadore():
 		self.posicionInicial = tablero.posicionJugadores[playerID - 1]
 		self.tamanoCasaInicial = tablero.tamanoCasaInicial
 		self.matrizTerritorio = np.zeros((tablero.altura + 2, tablero.base + 2))
-		
+		self.posicionJugador = tablero.posicionJugadores[playerID - 1]
 		vectorAux1 = np.ones((tablero.base, 1))
 		vectorAux2 = np.ones((tablero.altura + 2, 1))
 		matrizAux = np.zeros((tablero.base, tablero.altura))
@@ -32,6 +35,8 @@ class jugadore():
 		for i in list(range(self.posicionInicial[0] - int((self.tamanoCasaInicial - 1) / 2), self.posicionInicial[0] + int((self.tamanoCasaInicial + 1) / 2))):
 			for j in list(range(self.posicionInicial[1] - int((self.tamanoCasaInicial - 1) / 2), self.posicionInicial[1] + int((self.tamanoCasaInicial + 1) / 2))):
 				self.matrizTerritorio[i, j] = 1
+
+	def avanzar(self)
 
 
 
